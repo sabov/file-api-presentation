@@ -313,7 +313,6 @@ a:focus {
 }
 .drag-and-drop input {
   margin-left:370px;
-  font-size:100px;
 }
 #drag {
   overflow:hidden;
@@ -378,4 +377,9 @@ button {
 }
 .last h2 {
   font-size:120px;
+}
+.ie img{
+  width:300px;
+  margin-left:230px;
+  height:auto;
 }
