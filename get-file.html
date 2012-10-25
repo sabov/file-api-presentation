@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <style type="text/css">
+    body {
+      font-family: Arial;
+    }
+    h1 {
+      text-align: center;
+      margin-top:100px;
+      font-size:70px;
+    }
+    p {
+      text-align:center;
+      font-size:50px;
+      color:#444;
+    }
+  </style>
+  <title>Get file from local file system</title>
+</head>
+  <body>
+    <h1>File from local file system:</h1>
+    <p id="text"></p>
+  </body>
+  <script type="text/javascript">
+      window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+      window.requestFileSystem(window.TEMPORARY, 5*1024*1024, getFile, errorHandler);
+    function errorHandler(err){
+     var msg = 'An error occured: ';
+      switch (err.code) {
+        case FileError.NOT_FOUND_ERR:
+          msg += 'File or directory not found';
+          break;
+        case FileError.NOT_READABLE_ERR:
+          msg += 'File or directory not readable';
+          break;
+        case FileError.PATH_EXISTS_ERR:
+          msg += 'File or directory already exists';
+          break;
+        case FileError.TYPE_MISMATCH_ERR:
+          msg += 'Invalid filetype';
+          break;
+        default:
+          msg += 'Unknown Error';
+          break;
+      };
+     console.log(msg);
+    };
+    function getFile(fs) {
+      fs.root.getFile('test.txt', {}, function(fileEntry) {
+        fileEntry.file(function(file) {
+          var reader = new FileReader();
+          reader.onloadend = function(e) {
+            var text = document.getElementById('text');
+            text.innerHTML = this.result;
+          };
+          reader.readAsText(file);
+        }, errorHandler);
+      }, errorHandler);
+    }
+  </script>
+</html>
