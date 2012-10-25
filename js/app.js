@@ -17,14 +17,15 @@
       for(var i = 0; i < this.files.length; i++) {
         var reader = new FileReader();
         reader.onload = function (e) {
-          var img    = jQuery('<img/>');
+          var li  = jQuery('<li></li>');
+          var img = jQuery('<img/>');
           img.attr('src', e.target.result);
-          jQuery('.items').append(img);
+          li.append(img);
+          jQuery('.items').append(li);
           clearTimeout(tmId);
           tmId = setTimeout(function() {
-            alert('strat');
             myDrag = new iDrag('.items');
-          }, 1000);
+          }, 100);
         };
         reader.readAsDataURL(this.files[i]);
       }

@@ -306,13 +306,18 @@ a:focus {
 .drag-and-drop {
   height:500px;
 }
-.drag-and-drop img {
-  height:100px;
-  width:auto;
+.drag-and-drop li {
+  width:160px;
   position:absolute;
+  list-style:none;
+}
+.drag-and-drop img {
+  height:140px;
+  margin:10px;
+  width:auto;
 }
 .drag-and-drop input {
-  margin-left:370px;
+  margin-left:350px;
 }
 #drag {
   overflow:hidden;
