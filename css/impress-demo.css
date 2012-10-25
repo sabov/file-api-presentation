@@ -308,6 +308,7 @@ a:focus {
 }
 .drag-and-drop li {
   width:160px;
+  height:175px;
   position:absolute;
   list-style:none;
 }
